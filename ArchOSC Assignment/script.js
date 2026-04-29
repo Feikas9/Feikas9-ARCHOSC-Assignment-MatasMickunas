@@ -26,14 +26,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("imgModal");
   const modalImg = document.getElementById("imgZoomed");
   const captionText = document.getElementById("caption");
-  const img = document.getElementById("zoomImg");
   const closeBtn = document.getElementsByClassName("close")[0];
 
-  img.onclick = function() {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-  }
+  // Select all images with class "zoomImg"
+  const zoomImages = document.querySelectorAll(".zoomImg");
+
+  zoomImages.forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src;
+      captionText.innerHTML = this.alt;
+    }
+  });
 
   closeBtn.onclick = function() {
     modal.style.display = "none";
